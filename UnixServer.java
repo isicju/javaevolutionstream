@@ -1,3 +1,5 @@
+package org.example;
+
 import java.io.IOException;
 import java.net.StandardProtocolFamily;
 import java.net.UnixDomainSocketAddress;
@@ -13,10 +15,11 @@ public class UnixServer {
 
 
         Path socketPath = Paths.get(args[0]);
+        Path newPath = socketPath.resolve("my.socket");
 
         try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX)) {
 
-            serverSocketChannel.bind(UnixDomainSocketAddress.of(socketPath));
+            serverSocketChannel.bind(UnixDomainSocketAddress.of(newPath));
             System.out.println("Unix Domain Socket Server is running...");
 
             while (true) {

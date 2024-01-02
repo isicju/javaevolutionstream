@@ -14,11 +14,12 @@ public class UnixServer {
         // Create a Unix domain server
 
 
-        Path socketPath = Paths.get("/path/to/unix/socket");
+        Path socketPath = Paths.get(args[0]);
+       Path newPath = socketPath.resolve("my.socket");
 
         try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX)) {
 
-            serverSocketChannel.bind(UnixDomainSocketAddress.of(socketPath));
+            serverSocketChannel.bind(UnixDomainSocketAddress.of(newPath));
             System.out.println("Unix Domain Socket Server is running...");
 
             while (true) {
