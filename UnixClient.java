@@ -23,6 +23,7 @@ public class UnixClient {
         long before = System.currentTimeMillis();
 
         while (buffer.hasRemaining()) {
+            System.out.println("I was here");
             socketChannel.write(buffer);
         }
         System.out.println("total time " + (System.currentTimeMillis() - before) / 1000f + " seconds");
