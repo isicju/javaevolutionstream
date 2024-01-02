@@ -1,6 +1,7 @@
 package org.example;
 
 import java.io.IOException;
+import java.net.StandardProtocolFamily;
 import java.net.UnixDomainSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.ServerSocketChannel;
@@ -10,9 +11,13 @@ import java.nio.file.Paths;
 
 public class UnixServer {
     public static void main(String[] args) throws IOException {
+        // Create a Unix domain server
+
+
         Path socketPath = Paths.get("/path/to/unix/socket");
 
-        try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open()) {
+        try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX)) {
+
             serverSocketChannel.bind(UnixDomainSocketAddress.of(socketPath));
             System.out.println("Unix Domain Socket Server is running...");
 
