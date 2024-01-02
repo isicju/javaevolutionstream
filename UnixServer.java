@@ -21,7 +21,7 @@ public class UnixServer {
     public static void main(String[] args) throws Exception {
         // Create a Unix domain server
         Path socketPath = Paths.get(args[0]);
-        Path newPath = socketPath.resolve("my.socket");
+        Path newPath = socketPath.resolve(args[1]);
 
         try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX)) {
 
