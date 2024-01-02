@@ -13,7 +13,7 @@ public class UnixServer {
 
 
         Path socketPath = Paths.get(args[0]);
-        Path newPath = socketPath.resolve("my.socket");
+        Path newPath = socketPath.resolve(args[1]);
 
         try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX)) {
 
