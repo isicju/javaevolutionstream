@@ -12,7 +12,7 @@ public class UnixServer {
         // Create a Unix domain server
 
 
-        Path socketPath = Paths.get("/path/to/unix/socket");
+        Path socketPath = Paths.get(args[0]);
 
         try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX)) {
 

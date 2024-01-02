@@ -11,7 +11,7 @@ public class UnixClient {
     public static void main(String[] args) throws IOException {
         String url = args[0];
 
-        Path socketPath = Paths.get("/path/to/unix/socket");
+        Path socketPath = Paths.get(args[1]);
         SocketChannel socketChannel = SocketChannel.open(StandardProtocolFamily.UNIX);
         socketChannel.connect(UnixDomainSocketAddress.of(socketPath));
         Path filePath = Paths.get(url);
