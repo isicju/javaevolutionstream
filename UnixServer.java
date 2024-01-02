@@ -24,7 +24,7 @@ public class UnixServer {
         Path newPath = socketPath.resolve(args[1]);
 
         try (ServerSocketChannel serverSocketChannel = ServerSocketChannel.open(StandardProtocolFamily.UNIX)) {
-
+            System.out.println("socket address: " + newPath.toAbsolutePath());
             serverSocketChannel.bind(UnixDomainSocketAddress.of(newPath));
             System.out.println("Unix Domain Socket Server is running...");
 
